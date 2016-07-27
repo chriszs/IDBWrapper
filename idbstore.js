@@ -135,6 +135,9 @@
                 return implName in self;
             });
         }
+        if (availableImplementations.length > 0) {
+            env = self;
+        }
         this.implementation = availableImplementations[0];
         this.idb = env[this.implementation];
         this.keyRange = env.IDBKeyRange || env.webkitIDBKeyRange || env.mozIDBKeyRange;
