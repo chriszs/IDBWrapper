@@ -130,6 +130,11 @@
         var availableImplementations = this.implementationPreference.filter(function (implName) {
             return implName in env;
         });
+        if (availableImplementations.length <= 0) {
+            availableImplementations = this.implementationPreference.filter(function (implName) {
+                return implName in self;
+            });
+        }
         this.implementation = availableImplementations[0];
         this.idb = env[this.implementation];
         this.keyRange = env.IDBKeyRange || env.webkitIDBKeyRange || env.mozIDBKeyRange;
